@@ -1,5 +1,5 @@
 name: staticcheck
-on: [pull_request, workflow_dispatch]
+on: [push, fork, pull_request, workflow_dispatch]
 jobs:
   run:
     name: staticcheck
