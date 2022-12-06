@@ -1,5 +1,4 @@
-on:
-  - pull_request
+on: [push, fork, pull_request]
 jobs:
   lint-test-build-package:
     runs-on: ubuntu-latest
