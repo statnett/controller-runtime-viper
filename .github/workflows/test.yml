@@ -1,7 +1,7 @@
 name: Run unit tests
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
-  run:
+  run-tests:
     name: go test
     runs-on: ubuntu-latest
     steps:

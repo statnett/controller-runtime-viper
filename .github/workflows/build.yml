@@ -1,7 +1,7 @@
 name: build the package
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
-  run:
+  build-package:
     name: build
     runs-on: ubuntu-latest
     steps:

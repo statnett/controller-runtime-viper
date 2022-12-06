@@ -1,7 +1,7 @@
 name: staticcheck
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
-  run:
+  run-staticcheck:
     name: staticcheck
     runs-on: ubuntu-latest
     steps:
@@ -10,3 +10,4 @@ jobs:
       - uses: dominikh/staticcheck-action@v1.2.0
         with:
           version: "2022.1"
+          working-directory: "pkg/zap"
