@@ -1,6 +1,5 @@
 name: Reusable common Go bootstrapping steps
-on:
-  workflow_dispatch:
+on: [workflow_call]
 
 jobs:
   bootstrap-go-env:
