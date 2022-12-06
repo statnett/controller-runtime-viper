@@ -74,7 +74,7 @@ func UseFlagOptions(in *Options) crzap.Opts {
 	if err := viper.Unmarshal(in, viper.DecodeHook(
 		zapHook(),
 	)); err != nil {
-		panic(fmt.Errorf("failed to unmarshal zap config: %s", err))
+		panic(fmt.Errorf("unmarshal zap config: %w", err))
 	}
 
 	return func(o *crzap.Options) {
@@ -119,6 +119,7 @@ func newJSONEncoder(opts ...crzap.EncoderConfigOption) zapcore.Encoder {
 	for _, opt := range opts {
 		opt(&encoderConfig)
 	}
+
 	return zapcore.NewJSONEncoder(encoderConfig)
 }
 
@@ -146,6 +147,7 @@ func zapHook() mapstructure.DecodeHookFuncType {
 				if err != nil {
 					return nil, fmt.Errorf("invalid log level \"%s\"", levelVal)
 				}
+
 				if logLevel > 0 {
 					intLevel := -1 * logLevel
 					return zap.NewAtomicLevelAt(zapcore.Level(int8(intLevel))), nil
@@ -153,6 +155,7 @@ func zapHook() mapstructure.DecodeHookFuncType {
 					return nil, fmt.Errorf("invalid log level \"%s\"", levelVal)
 				}
 			}
+
 			return zap.NewAtomicLevelAt(level), nil
 		} else if in.Kind() == reflect.String && out == newEncoderFuncType {
 			// TODO: implement EncodeHook interface for type NewEncoderFunc upstream
@@ -179,6 +182,7 @@ func zapHook() mapstructure.DecodeHookFuncType {
 			}
 			return v, nil
 		}
+
 		return val, nil
 	}
 }
