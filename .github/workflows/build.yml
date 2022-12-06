@@ -2,6 +2,7 @@ name: build the package
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
   build-package:
+    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflows/bootstrapgo.yml
       - name: Go build
