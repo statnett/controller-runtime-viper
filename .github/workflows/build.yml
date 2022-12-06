@@ -2,9 +2,8 @@ name: build the package
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
   build-package:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/bootstrapgo.yml
     steps:
-      - uses: .github/workflows/bootstrapgo.yml
       - name: Go build
         run: |
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build ./...

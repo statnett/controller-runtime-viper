@@ -3,9 +3,8 @@ on: [push, fork, pull_request, workflow_dispatch]
 
 jobs:
   golangci:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/bootstrapgo.yml
     steps:
-      - uses: .github/workflows/bootstrapgo.yml
       - uses: golangci/golangci-lint-action@v3
         with:
           version: v1.49

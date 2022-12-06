@@ -2,10 +2,8 @@ name: Run unit tests
 on: [push, fork, pull_request, workflow_dispatch]
 jobs:
   run-tests:
-    name: go test
-    runs-on: ubuntu-latest
+    uses: .github/workflows/bootstrapgo.yml
     steps:
-      - uses: .github/workflows/bootstrapgo.yml
       - name: Go test
         run: |
           go test -v 2>&1 ./... -coverprofile cover.out -covermode count | tee test-report.txt
