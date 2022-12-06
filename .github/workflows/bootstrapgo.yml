@@ -1,0 +1,12 @@
+name: Reusable common Go bootstrapping steps
+on:
+  workflow_dispatch:
+
+jobs:
+  bootstrap-go-env:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/setup-go@v3
+        with:
+          go-version: 1.19.x
+      - uses: actions/checkout@v2

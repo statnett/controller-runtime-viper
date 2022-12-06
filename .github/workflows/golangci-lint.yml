@@ -3,12 +3,10 @@ on: [push, fork, pull_request, workflow_dispatch]
 
 jobs:
   golangci:
-    name: lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
+      - uses: .github/workflows/bootstrapgo.yml
+      - uses: golangci/golangci-lint-action@v3
         with:
           version: v1.49
           args: --issues-exit-code=0
