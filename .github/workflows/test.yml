@@ -1,0 +1,30 @@
+name: Run staticchecks and unit tests
+on:
+  pull_request:
+jobs:
+  run:
+    name: go test
+    runs-on: ubuntu-latest
+    steps:
+      - name: INstall Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.19.x
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Go vet check
+        run: |
+          go vet ./...
+      - name: Gofmt check
+        run: |
+          diff=`go fmt ./...`
+          if [[ -n "${diff}" ]]; then
+            echo "Gofmt check failed :"
+            echo "${diff}"
+            exit 1
+          fi
+      - name: Go test
+        run: |
+          go test -v 2>&1 ./... -coverprofile cover.out -covermode count | tee test-report.txt
+
+
