@@ -33,16 +33,21 @@ Before you submit your Pull Request (PR) consider the following guidelines:
      go test ./...
      ```
 
-7. Commit your changes using a descriptive commit message. We follow [Semantic release](https://github.com/semantic-release/semantic-release) to determine next semantic version number, generate a changelog and publish the release. Adherence to these conventions is necessary because release notes are automatically generated from these messages.
+7. Run `golangci-lint` to catch any linter errors.
+    ```shell
+     golangci-lint run
+     ```
+
+8. Commit your changes using a descriptive commit message. We follow [Semantic release](https://github.com/semantic-release/semantic-release) to determine next semantic version number, generate a changelog and publish the release. Adherence to these conventions is necessary because release notes are automatically generated from these messages.
 
      ```shell
      git commit
      ```
 
-8. Push your branch to GitHub:
+9. Push your branch to GitHub:
 
     ```shell
     git push origin my-fix-branch
     ```
 
-9. In GitHub, send a pull request to `main`.
+10. In GitHub, send a pull request to `main`.
