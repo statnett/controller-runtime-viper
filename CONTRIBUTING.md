@@ -5,7 +5,7 @@
 Before you submit an issue, please search the issue tracker. An issue for your problem might already exist and the discussion might inform you of workarounds readily available.
 
 We want to fix all the issues as soon as possible, but before fixing a bug, we need to reproduce and confirm it.
-In order to reproduce bugs, we require that you provide a minimal reproduction.
+To reproduce bugs, we require that you provide minimal reproduction.
 Having a minimal reproducible scenario gives us a wealth of important information without going back and forth to you with additional questions.
 
 ## Submitting a Pull Request (PR)
