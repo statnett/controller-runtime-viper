@@ -19,7 +19,7 @@ jobs:
         if: always() && (steps.lint_pr_title.outputs.error_message != null)
         with:
           header: pr-title-lint-error
-          # yamllint disable-line rule:line-length
+          # yamllint disable rule:line-length
           message: |
             Hey there and thank you for opening this pull request! :wave:
 
@@ -30,6 +30,7 @@ jobs:
             ```
             ${{ steps.lint_pr_title.outputs.error_message }}
             ```
+          # yamllint enable rule:line-length
       # Delete a previous comment when the issue has been resolved
       - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
         uses: marocchino/sticky-pull-request-comment@v2
