@@ -6,21 +6,19 @@ on:
       - opened
       - edited
       - synchronize
-permissions:  # added using https://github.com/step-security/secure-workflows
+permissions: # added using https://github.com/step-security/secure-workflows
   contents: read
-
 jobs:
   pr-title-lint:
     permissions:
-      pull-requests: write  # for marocchino/sticky-pull-request-comment to create or update PR comment
-      statuses: write  # for amannn/action-semantic-pull-request to mark status of analyzed PR
+      pull-requests: write # for marocchino/sticky-pull-request-comment to create or update PR comment
+      statuses: write # for amannn/action-semantic-pull-request to mark status of analyzed PR
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
-
       - uses: amannn/action-semantic-pull-request@01d5fd8a8ebb9aafe902c40c53f0f4744f7381eb # v5.0.2
         id: lint_pr_title
         env:
