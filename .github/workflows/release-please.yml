@@ -1,0 +1,21 @@
+---
+name: Release Please
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          # TODO: Eventually remove this, when we are ready for GA (version 1.0.0)
+          bump-minor-pre-major: true
+          changelog-types: >
+            [
+              { "type": "feat", "section": "Features" },
+              { "type": "fix", "section": "Bug Fixes" },
+              { "type": "build", "scope": "deps", "section": "Dependency Updates" }
+            ]
+          release-type: go
