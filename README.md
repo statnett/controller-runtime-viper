@@ -7,10 +7,10 @@
 
 Wrapper package to support viper in controller-runtime based Operators. Works as a drop-in replacement for controller-runtime zap package.
 
-[CI-img]: https://github.com/statnett/controller-runtime-viper/actions/workflows/ci.yml/badge.svg
-[CI]: https://github.com/statnett/controller-runtime-viper/actions/workflows/ci.yml
-[CodeQL-img]: https://github.com/statnett/controller-runtime-viper/actions/workflows/codeql.yml/badge.svg
-[CodeQL]: https://github.com/statnett/controller-runtime-viper/actions/workflows/codeql.yml
+[CI-img]: https://github.com/statnett/controller-runtime-viper/actions/workflows/ci.yml/badge.svg?branch=main
+[CI]: https://github.com/statnett/controller-runtime-viper/actions/workflows/ci.yml?query=branch%3Amain++
+[CodeQL-img]: https://github.com/statnett/controller-runtime-viper/actions/workflows/codeql.yml/badge.svg?branch=main
+[CodeQL]: https://github.com/statnett/controller-runtime-viper/actions/workflows/codeql.yml?query=branch%3Amain++
 [conventional-commits-img]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
 [conventional-commits]: https://conventionalcommits.org
 [report-card-img]: https://goreportcard.com/badge/github.com/statnett/controller-runtime-viper
