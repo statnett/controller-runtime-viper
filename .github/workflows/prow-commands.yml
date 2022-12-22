@@ -1,3 +1,4 @@
+---
 name: Handle prow slash commands
 on:
   issue_comment:
