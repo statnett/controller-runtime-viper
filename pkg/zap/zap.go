@@ -1,6 +1,7 @@
 package zap
 
 import (
+	"encoding"
 	"flag"
 	"fmt"
 	"io"
@@ -133,60 +134,61 @@ var levelStrings = map[string]zapcore.Level{
 func zapHook() mapstructure.DecodeHookFuncType {
 	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
 		if in.Kind() == reflect.String && out == levelEnablerType {
-			levelVal := val.(string)
-
+			sVal := val.(string)
 			// return nil if ZAP_LOG_LEVEL is not set, crzap lib sets the default value
-			if levelVal == "" {
+			if sVal == "" {
 				return nil, nil
 			}
 
 			// ZAP_LOG_LEVEL supports setting of integer value > 0 in addition to `info`, `error` or `debug`
-			level, validLevel := levelStrings[strings.ToLower(levelVal)]
+			level, validLevel := levelStrings[strings.ToLower(sVal)]
 			if !validLevel {
-				logLevel, err := strconv.Atoi(levelVal)
+				logLevel, err := strconv.Atoi(sVal)
 				if err != nil {
-					return nil, fmt.Errorf("invalid log level \"%s\"", levelVal)
+					return nil, fmt.Errorf("invalid log level \"%s\"", val)
 				}
 
 				if logLevel > 0 {
 					intLevel := -1 * logLevel
 					return zap.NewAtomicLevelAt(zapcore.Level(int8(intLevel))), nil
 				} else {
-					return nil, fmt.Errorf("invalid log level \"%s\"", levelVal)
+					return nil, fmt.Errorf("invalid log level \"%s\"", val)
 				}
 			}
 
 			return zap.NewAtomicLevelAt(level), nil
 		} else if in.Kind() == reflect.String && out == newEncoderFuncType {
-			// TODO: implement EncodeHook interface for type NewEncoderFunc upstream
-			encoder := crzap.NewEncoderFunc(newJSONEncoder)
-			encoderIn := val.(string)
+			// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
+			var encoder crzap.NewEncoderFunc
 
-			if encoderIn == "" {
-				return encoder, nil
-			}
-
-			switch encoderIn {
+			switch val.(string) {
+			case "": // Encoder not configured; use default encoder
+				// TODO: Isn't the default encoder dependant on the development/production setting?
+				encoder = newJSONEncoder
 			case "console":
 				encoder = newConsoleEncoder
 			case "json":
 				encoder = newJSONEncoder
 			default:
-				return nil, fmt.Errorf("invalid encoder config(%s). Only `json` and `console` values are supported", encoderIn)
+				return nil, fmt.Errorf("invalid encoder value \"%s\"", val)
 			}
+
 			return encoder, nil
 		} else if in.Kind() == reflect.String && out == timeEncoderType {
-			v := reflect.New(timeEncoderType).Interface()
-			if err := v.(EncoderHook).UnmarshalText([]byte(val.(string))); err != nil {
+			timeEncoder := reflect.New(timeEncoderType).Interface()
+
+			unmarshaller, ok := timeEncoder.(encoding.TextUnmarshaler)
+			if !ok {
+				return val, nil
+			}
+
+			if err := unmarshaller.UnmarshalText([]byte(val.(string))); err != nil {
 				return nil, err
 			}
-			return v, nil
+
+			return timeEncoder, nil
 		}
 
 		return val, nil
 	}
-}
-
-type EncoderHook interface {
-	UnmarshalText(text []byte) error
 }
