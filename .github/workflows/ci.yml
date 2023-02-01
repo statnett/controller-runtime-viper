@@ -50,4 +50,4 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
-      - run: go test -v ./...
+      - run: make test

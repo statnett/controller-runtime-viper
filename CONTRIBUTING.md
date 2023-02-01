@@ -30,7 +30,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 6. Run the unit tests and ensure that all tests pass.
     ```shell
-     go test ./...
+     make test
      ```
 
 7. Run `golangci-lint` to catch any linter errors.
