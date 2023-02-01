@@ -131,13 +131,22 @@ var levelStrings = map[string]zapcore.Level{
 	"panic": zap.PanicLevel,
 }
 
-func zapHook() mapstructure.DecodeHookFuncType {
+func zapHook() mapstructure.DecodeHookFunc {
+	return mapstructure.ComposeDecodeHookFunc(
+		stringToLevelEnablerHookFunc(),
+		stringToNewEncoderFuncHookFunc(),
+		stringToTimeEncoderHookFunc(),
+	)
+}
+
+func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
 		if in.Kind() == reflect.String && out == levelEnablerType {
 			sVal := val.(string)
 			// return nil if ZAP_LOG_LEVEL is not set, crzap lib sets the default value
 			if sVal == "" {
-				return nil, nil
+				var v zapcore.LevelEnabler
+				return &v, nil
 			}
 
 			// ZAP_LOG_LEVEL supports setting of integer value > 0 in addition to `info`, `error` or `debug`
@@ -157,7 +166,15 @@ func zapHook() mapstructure.DecodeHookFuncType {
 			}
 
 			return zap.NewAtomicLevelAt(level), nil
-		} else if in.Kind() == reflect.String && out == newEncoderFuncType {
+		}
+
+		return val, nil
+	}
+}
+
+func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
+	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
+		if in.Kind() == reflect.String && out == newEncoderFuncType {
 			// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
 			var encoder crzap.NewEncoderFunc
 
@@ -174,7 +191,15 @@ func zapHook() mapstructure.DecodeHookFuncType {
 			}
 
 			return encoder, nil
-		} else if in.Kind() == reflect.String && out == timeEncoderType {
+		}
+
+		return val, nil
+	}
+}
+
+func stringToTimeEncoderHookFunc() mapstructure.DecodeHookFuncType {
+	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
+		if in.Kind() == reflect.String && out == timeEncoderType {
 			timeEncoder := reflect.New(timeEncoderType).Interface()
 
 			unmarshaller, ok := timeEncoder.(encoding.TextUnmarshaler)
