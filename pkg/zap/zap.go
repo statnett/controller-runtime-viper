@@ -1,7 +1,6 @@
 package zap
 
 import (
-	"encoding"
 	"flag"
 	"fmt"
 	"io"
@@ -97,7 +96,6 @@ func New(opts ...crzap.Opts) logr.Logger {
 var (
 	levelEnablerType   = reflect.TypeOf((*zapcore.LevelEnabler)(nil)).Elem()
 	newEncoderFuncType = reflect.TypeOf((*crzap.NewEncoderFunc)(nil)).Elem()
-	timeEncoderType    = reflect.TypeOf((*zapcore.TimeEncoder)(nil)).Elem()
 )
 
 /*
@@ -135,7 +133,7 @@ func zapHook() mapstructure.DecodeHookFunc {
 	return mapstructure.ComposeDecodeHookFunc(
 		stringToLevelEnablerHookFunc(),
 		stringToNewEncoderFuncHookFunc(),
-		stringToTimeEncoderHookFunc(),
+		mapstructure.TextUnmarshallerHookFunc(),
 	)
 }
 
@@ -191,27 +189,6 @@ func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
 			}
 
 			return encoder, nil
-		}
-
-		return val, nil
-	}
-}
-
-func stringToTimeEncoderHookFunc() mapstructure.DecodeHookFuncType {
-	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
-		if in.Kind() == reflect.String && out == timeEncoderType {
-			timeEncoder := reflect.New(timeEncoderType).Interface()
-
-			unmarshaller, ok := timeEncoder.(encoding.TextUnmarshaler)
-			if !ok {
-				return val, nil
-			}
-
-			if err := unmarshaller.UnmarshalText([]byte(val.(string))); err != nil {
-				return nil, err
-			}
-
-			return timeEncoder, nil
 		}
 
 		return val, nil
