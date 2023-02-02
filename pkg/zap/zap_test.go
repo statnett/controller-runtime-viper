@@ -233,8 +233,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			outRaw := logOut.Bytes()
 
-			res := map[string]interface{}{}
-			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
+			Expect(json.Valid(outRaw)).To(BeTrue())
 		})
 
 		It("Should default to json encoder when not set", func() {
