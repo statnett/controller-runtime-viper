@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.3](https://github.com/statnett/controller-runtime-viper/compare/v0.1.2...v0.1.3) (2023-02-02)
+
+
+### Bug Fixes
+
+* default encoder is dependent on dev-mode ([#82](https://github.com/statnett/controller-runtime-viper/issues/82)) ([65f0dba](https://github.com/statnett/controller-runtime-viper/commit/65f0dba33fba1495aa54be5c9e9dd8c5b48d44fb))
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.7.1 to 2.8.0 ([#78](https://github.com/statnett/controller-runtime-viper/issues/78)) ([aa4e58d](https://github.com/statnett/controller-runtime-viper/commit/aa4e58d2376fbe44a19dc991884ad78b0c3493f5))
+
 ## [0.1.2](https://github.com/statnett/controller-runtime-viper/compare/v0.1.1...v0.1.2) (2023-01-30)
 
 
