@@ -22,6 +22,8 @@ func TestSource(t *testing.T) {
 	RunSpecs(t, "Zap Log Suite")
 }
 
+const testMessage = "This is a test message"
+
 var _ = Describe("Zap log level flag options setup", func() {
 	var (
 		fs             flag.FlagSet
@@ -189,7 +191,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
-			logger.Info("This is a test message")
+			logger.Info(testMessage)
 
 			outRaw := logOut.Bytes()
 
@@ -208,7 +210,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			logOut := new(bytes.Buffer)
 
-			msg := "This is a test message"
+			msg := testMessage
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
 			logger.Info(msg)
@@ -224,7 +226,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			logOut := new(bytes.Buffer)
 
-			msg := "This is a test message"
+			msg := testMessage
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
 			logger.Info(msg)
@@ -238,7 +240,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should default to json encoder when not set", func() {
 			logOut := new(bytes.Buffer)
 
-			msg := "This is a test message"
+			msg := testMessage
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
 			logger.Info(msg)
@@ -266,7 +268,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			logOut := new(bytes.Buffer)
 
-			msg := "This is a test message"
+			msg := testMessage
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
 			logger.Info(msg)
@@ -284,7 +286,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			logOut := new(bytes.Buffer)
 
-			msg := "This is a test message"
+			msg := testMessage
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
 			logger.Info(msg)
