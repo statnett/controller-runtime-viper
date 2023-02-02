@@ -141,13 +141,13 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
 		if in.Kind() == reflect.String && out == levelEnablerType {
 			sVal := val.(string)
-			// return nil if ZAP_LOG_LEVEL is not set, crzap lib sets the default value
 			if sVal == "" {
 				var v zapcore.LevelEnabler
+				// return nil if level is not set; controller-runtime sets the default value
 				return &v, nil
 			}
 
-			// ZAP_LOG_LEVEL supports setting of integer value > 0 in addition to `info`, `error` or `debug`
+			// level supports setting of integer value > 0 in addition to `info`, `error` or `debug`
 			level, validLevel := levelStrings[strings.ToLower(sVal)]
 			if !validLevel {
 				logLevel, err := strconv.Atoi(sVal)
@@ -177,9 +177,9 @@ func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
 			var encoder crzap.NewEncoderFunc
 
 			switch val.(string) {
-			case "": // Encoder not configured; use default encoder
-				// TODO: Isn't the default encoder dependant on the development/production setting?
-				encoder = newJSONEncoder
+			case "":
+				// return nil if encoder is not set; controller-runtime sets the default value
+				return encoder, nil
 			case "console":
 				encoder = newConsoleEncoder
 			case "json":

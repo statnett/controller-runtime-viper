@@ -202,43 +202,51 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 	Context("with zap-encoding flag provided", Label("encoder"), func() {
 
-		It("Should set console encoder in options", func() {
-			os.Setenv("ZAP_ENCODER", "console")
-			defer os.Unsetenv("ZAP_ENCODER")
+		It("Should default to console encoder when not set (in development mode)", func() {
+			os.Setenv("ZAP_DEVEL", "true")
+			defer os.Unsetenv("ZAP_DEVEL")
 
-			opt := crzap.Options{}
-			UseFlagOptions(&opts)(&opt)
+			logOut := new(bytes.Buffer)
 
-			optVal := reflect.ValueOf(opt.NewEncoder)
-			expVal := reflect.ValueOf(newConsoleEncoder)
+			msg := "This is a test message"
 
-			Expect(optVal.Pointer()).To(Equal(expVal.Pointer()))
+			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
+			logger.Info(msg)
+
+			outRaw := logOut.String()
+			expectedPattern := `.+\tINFO\tThis is a test message\n`
+			Expect(outRaw).Should(MatchRegexp(expectedPattern))
 		})
 
 		It("Should set json encoder in options", func() {
 			os.Setenv("ZAP_ENCODER", "json")
 			defer os.Unsetenv("ZAP_ENCODER")
 
-			opt := crzap.Options{}
-			UseFlagOptions(&opts)(&opt)
+			logOut := new(bytes.Buffer)
 
-			optVal := reflect.ValueOf(opt.NewEncoder)
-			expVal := reflect.ValueOf(newJSONEncoder)
+			msg := "This is a test message"
 
-			Expect(optVal.Pointer()).To(Equal(expVal.Pointer()))
+			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
+			logger.Info(msg)
+
+			outRaw := logOut.Bytes()
+
+			res := map[string]interface{}{}
+			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
 		})
 
 		It("Should default to json encoder when not set", func() {
-			os.Setenv("ZAP_ENCODER", "")
-			defer os.Unsetenv("ZAP_ENCODER")
+			logOut := new(bytes.Buffer)
 
-			opt := crzap.Options{}
-			UseFlagOptions(&opts)(&opt)
+			msg := "This is a test message"
 
-			optVal := reflect.ValueOf(opt.NewEncoder)
-			expVal := reflect.ValueOf(newJSONEncoder)
+			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
+			logger.Info(msg)
 
-			Expect(optVal.Pointer()).To(Equal(expVal.Pointer()))
+			outRaw := logOut.Bytes()
+
+			res := map[string]interface{}{}
+			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
 		})
 
 		It("should PANIC when invalid encoder is supplied", func() {
