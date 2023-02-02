@@ -246,8 +246,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			outRaw := logOut.Bytes()
 
-			res := map[string]interface{}{}
-			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
+			Expect(json.Valid(outRaw)).To(BeTrue())
 		})
 
 		It("should PANIC when invalid encoder is supplied", func() {
