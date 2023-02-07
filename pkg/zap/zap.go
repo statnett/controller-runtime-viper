@@ -139,58 +139,53 @@ func zapHook() mapstructure.DecodeHookFunc {
 
 func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
-		if in.Kind() == reflect.String && out == levelEnablerType {
-			sVal := val.(string)
-			if sVal == "" {
-				var v zapcore.LevelEnabler
-				// return nil if level is not set; controller-runtime sets the default value
-				return &v, nil
+		if in.Kind() != reflect.String || out != levelEnablerType {
+			return val, nil
+		}
+		sVal := val.(string)
+		if sVal == "" {
+			var v zapcore.LevelEnabler
+			// return nil if level is not set; controller-runtime sets the default value
+			return &v, nil
+		}
+		// level supports setting of integer value > 0 in addition to `info`, `error` or `debug`
+		level, validLevel := levelStrings[strings.ToLower(sVal)]
+		if !validLevel {
+			logLevel, err := strconv.Atoi(sVal)
+			if err != nil {
+				return nil, fmt.Errorf("invalid log level \"%s\"", val)
 			}
 
-			// level supports setting of integer value > 0 in addition to `info`, `error` or `debug`
-			level, validLevel := levelStrings[strings.ToLower(sVal)]
-			if !validLevel {
-				logLevel, err := strconv.Atoi(sVal)
-				if err != nil {
-					return nil, fmt.Errorf("invalid log level \"%s\"", val)
-				}
-
-				if logLevel > 0 {
-					intLevel := -1 * logLevel
-					return zap.NewAtomicLevelAt(zapcore.Level(int8(intLevel))), nil
-				} else {
-					return nil, fmt.Errorf("invalid log level \"%s\"", val)
-				}
+			if logLevel > 0 {
+				intLevel := -1 * logLevel
+				return zap.NewAtomicLevelAt(zapcore.Level(int8(intLevel))), nil
+			} else {
+				return nil, fmt.Errorf("invalid log level \"%s\"", val)
 			}
-
-			return zap.NewAtomicLevelAt(level), nil
 		}
 
-		return val, nil
+		return zap.NewAtomicLevelAt(level), nil
 	}
 }
 
 func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
 	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
-		if in.Kind() == reflect.String && out == newEncoderFuncType {
-			// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
-			var encoder crzap.NewEncoderFunc
-
-			switch val.(string) {
-			case "":
-				// return nil if encoder is not set; controller-runtime sets the default value
-				return encoder, nil
-			case "console":
-				encoder = newConsoleEncoder
-			case "json":
-				encoder = newJSONEncoder
-			default:
-				return nil, fmt.Errorf("invalid encoder value \"%s\"", val)
-			}
-
-			return encoder, nil
+		if in.Kind() != reflect.String || out != newEncoderFuncType {
+			return val, nil
 		}
-
-		return val, nil
+		// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
+		var encoder crzap.NewEncoderFunc
+		switch val.(string) {
+		case "":
+			// return nil if encoder is not set; controller-runtime sets the default value
+			return encoder, nil
+		case "console":
+			encoder = newConsoleEncoder
+		case "json":
+			encoder = newJSONEncoder
+		default:
+			return nil, fmt.Errorf("invalid encoder value \"%s\"", val)
+		}
+		return encoder, nil
 	}
 }
