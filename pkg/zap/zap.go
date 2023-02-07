@@ -142,12 +142,14 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 		if in.Kind() != reflect.String || out != levelEnablerType {
 			return val, nil
 		}
+
 		sVal := val.(string)
 		if sVal == "" {
 			var v zapcore.LevelEnabler
 			// return nil if level is not set; controller-runtime sets the default value
 			return &v, nil
 		}
+
 		// level supports setting of integer value > 0 in addition to `info`, `error` or `debug`
 		level, validLevel := levelStrings[strings.ToLower(sVal)]
 		if !validLevel {
@@ -173,12 +175,12 @@ func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
 		if in.Kind() != reflect.String || out != newEncoderFuncType {
 			return val, nil
 		}
-		// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
+
 		var encoder crzap.NewEncoderFunc
+		// TODO: implement encoding.TextUnmarshaler interface for type NewEncoderFunc upstream
 		switch val.(string) {
 		case "":
 			// return nil if encoder is not set; controller-runtime sets the default value
-			return encoder, nil
 		case "console":
 			encoder = newConsoleEncoder
 		case "json":
@@ -186,6 +188,7 @@ func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
 		default:
 			return nil, fmt.Errorf("invalid encoder value \"%s\"", val)
 		}
+
 		return encoder, nil
 	}
 }
