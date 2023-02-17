@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.5](https://github.com/statnett/controller-runtime-viper/compare/v0.1.4...v0.1.5) (2023-02-17)
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.8.0 to 2.8.1 ([#91](https://github.com/statnett/controller-runtime-viper/issues/91)) ([d3ef952](https://github.com/statnett/controller-runtime-viper/commit/d3ef952dd0814cd0e9afaf1872218caf6eccff43))
+* **deps:** bump github.com/onsi/gomega from 1.26.0 to 1.27.0 ([#93](https://github.com/statnett/controller-runtime-viper/issues/93)) ([7be2385](https://github.com/statnett/controller-runtime-viper/commit/7be23850243456a1aed9d3625788b91a967d2087))
+* **deps:** bump golang.org/x/net from 0.6.0 to 0.7.0 ([#94](https://github.com/statnett/controller-runtime-viper/issues/94)) ([d9adad4](https://github.com/statnett/controller-runtime-viper/commit/d9adad488674911fdaa78c80464a033d202d2420))
+
 ## [0.1.4](https://github.com/statnett/controller-runtime-viper/compare/v0.1.3...v0.1.4) (2023-02-06)
 
 
