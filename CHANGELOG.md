@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.6](https://github.com/statnett/controller-runtime-viper/compare/v0.1.5...v0.1.6) (2023-03-09)
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.8.1 to 2.8.3 ([#97](https://github.com/statnett/controller-runtime-viper/issues/97)) ([8a95c91](https://github.com/statnett/controller-runtime-viper/commit/8a95c91adffd22547386038fe5ea7446a4b04df5))
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.8.3 to 2.8.4 ([#102](https://github.com/statnett/controller-runtime-viper/issues/102)) ([c36f1d6](https://github.com/statnett/controller-runtime-viper/commit/c36f1d69891bfcf88128c48551c4380de6039289))
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.8.4 to 2.9.0 ([#108](https://github.com/statnett/controller-runtime-viper/issues/108)) ([f709571](https://github.com/statnett/controller-runtime-viper/commit/f70957107d2e354939cce820d3704924e05c013f))
+* **deps:** bump github.com/onsi/gomega from 1.27.0 to 1.27.1 ([#96](https://github.com/statnett/controller-runtime-viper/issues/96)) ([852601a](https://github.com/statnett/controller-runtime-viper/commit/852601aa2e6d1171c57ea223f7b853999b248740))
+* **deps:** bump github.com/onsi/gomega from 1.27.1 to 1.27.2 ([#101](https://github.com/statnett/controller-runtime-viper/issues/101)) ([fbdd066](https://github.com/statnett/controller-runtime-viper/commit/fbdd066640af33831c0410d780a1d58bbf07ff39))
+* **deps:** bump sigs.k8s.io/controller-runtime from 0.14.4 to 0.14.5 ([#104](https://github.com/statnett/controller-runtime-viper/issues/104)) ([6c177d2](https://github.com/statnett/controller-runtime-viper/commit/6c177d253052b2916f8858c5e2bc81016ae5795f))
+
 ## [0.1.5](https://github.com/statnett/controller-runtime-viper/compare/v0.1.4...v0.1.5) (2023-02-17)
 
 
