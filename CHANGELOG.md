@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.8](https://github.com/statnett/controller-runtime-viper/compare/v0.1.7...v0.1.8) (2023-04-11)
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/go-logr/logr from 1.2.3 to 1.2.4 ([#130](https://github.com/statnett/controller-runtime-viper/issues/130)) ([0327c1e](https://github.com/statnett/controller-runtime-viper/commit/0327c1ec709fa6a1cdb1ececd92d72975fe1db7f))
+* **deps:** bump github.com/onsi/gomega from 1.27.5 to 1.27.6 ([#131](https://github.com/statnett/controller-runtime-viper/issues/131)) ([e4b477f](https://github.com/statnett/controller-runtime-viper/commit/e4b477f1c06ae7ebc2b68a7312d6c30c29d4e782))
+
 ## [0.1.7](https://github.com/statnett/controller-runtime-viper/compare/v0.1.6...v0.1.7) (2023-03-28)
 
 
