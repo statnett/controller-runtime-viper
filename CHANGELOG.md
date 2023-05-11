@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.9](https://github.com/statnett/controller-runtime-viper/compare/v0.1.8...v0.1.9) (2023-05-11)
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/go-logr/zapr from 1.2.3 to 1.2.4 ([#151](https://github.com/statnett/controller-runtime-viper/issues/151)) ([06cc391](https://github.com/statnett/controller-runtime-viper/commit/06cc391f4cd329d7d429b645a8f86f9eee7d1f0f))
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.9.2 to 2.9.3 ([#146](https://github.com/statnett/controller-runtime-viper/issues/146)) ([266a8be](https://github.com/statnett/controller-runtime-viper/commit/266a8bee70ce2d175311497360d8b0bbf8284733))
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.9.3 to 2.9.4 ([#147](https://github.com/statnett/controller-runtime-viper/issues/147)) ([35881be](https://github.com/statnett/controller-runtime-viper/commit/35881be6d082c258bad9969b1ada8e383abe08c8))
+
 ## [0.1.8](https://github.com/statnett/controller-runtime-viper/compare/v0.1.7...v0.1.8) (2023-04-11)
 
 
