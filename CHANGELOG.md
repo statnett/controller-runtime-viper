@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/statnett/controller-runtime-viper/compare/v0.2.0...v0.2.1) (2023-06-05)
+
+
+### Dependency Updates
+
+* **deps:** bump github.com/onsi/ginkgo/v2 from 2.9.5 to 2.9.7 ([#167](https://github.com/statnett/controller-runtime-viper/issues/167)) ([96dc1cf](https://github.com/statnett/controller-runtime-viper/commit/96dc1cffe3ceb7e6a7d587ca1b1cbbebfb0e895f))
+* **deps:** bump github.com/spf13/viper from 1.15.0 to 1.16.0 ([#165](https://github.com/statnett/controller-runtime-viper/issues/165)) ([41c003a](https://github.com/statnett/controller-runtime-viper/commit/41c003a561d949f33e606b7c2e1e82ec3ae3cacf))
+
 ## [0.2.0](https://github.com/statnett/controller-runtime-viper/compare/v0.1.9...v0.2.0) (2023-05-24)
 
 
