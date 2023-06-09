@@ -7,7 +7,7 @@ require (
 	github.com/go-logr/zapr v1.2.4
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/onsi/ginkgo/v2 v2.9.7
-	github.com/onsi/gomega v1.27.7
+	github.com/onsi/gomega v1.27.8
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.16.0
 	go.uber.org/zap v1.24.0
