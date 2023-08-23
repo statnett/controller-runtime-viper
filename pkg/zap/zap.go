@@ -42,12 +42,6 @@ type Options struct {
 	// os.Stderr.
 	DestWriter io.Writer
 
-	// DestWritter controls the destination of the log output.  Defaults to
-	// os.Stderr.
-	//
-	// Deprecated: Use DestWriter instead
-	DestWritter io.Writer
-
 	// Level configures the verbosity of the logging.
 	// Defaults to Debug when Development is true and Info otherwise.
 	// A zap log level should be multiplied by -1 to get the logr verbosity.
