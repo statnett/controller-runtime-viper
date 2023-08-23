@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/statnett/controller-runtime-viper/compare/v0.2.3...v0.3.0) (2023-08-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** bump sigs.k8s.io/controller-runtime from 0.15.1 to 0.16.0 ([#197](https://github.com/statnett/controller-runtime-viper/issues/197))
+
+### Dependency Updates
+
+* **deps:** bump sigs.k8s.io/controller-runtime from 0.15.1 to 0.16.0 ([#197](https://github.com/statnett/controller-runtime-viper/issues/197)) ([079648a](https://github.com/statnett/controller-runtime-viper/commit/079648a89aab82e2d30f7ca34770126bc7e55785))
+
 ## [0.2.3](https://github.com/statnett/controller-runtime-viper/compare/v0.2.2...v0.2.3) (2023-08-10)
 
 
