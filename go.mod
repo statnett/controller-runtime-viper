@@ -6,7 +6,7 @@ require (
 	github.com/go-logr/logr v1.2.4
 	github.com/go-logr/zapr v1.2.4
 	github.com/mitchellh/mapstructure v1.5.0
-	github.com/onsi/ginkgo/v2 v2.12.0
+	github.com/onsi/ginkgo/v2 v2.12.1
 	github.com/onsi/gomega v1.27.10
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.16.0
@@ -33,7 +33,7 @@ require (
 	github.com/subosito/gotenv v1.4.2 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/net v0.14.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
 	golang.org/x/text v0.12.0 // indirect
 	golang.org/x/tools v0.12.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
