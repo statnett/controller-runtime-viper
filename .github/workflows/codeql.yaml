@@ -84,7 +84,7 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@v4
-      - uses: aquasecurity/trivy-action@v0.12
+      - uses: aquasecurity/trivy-action@v0.12.0
         with:
           scan-type: fs
           ignore-unfixed: true
