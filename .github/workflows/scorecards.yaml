@@ -16,7 +16,8 @@ on:
     branches: ["main"]
 
 # Declare no permissions as default.
-permissions: {}
+permissions:
+  content: read
 
 jobs:
   analysis:
