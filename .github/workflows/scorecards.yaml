@@ -15,8 +15,8 @@ on:
   push:
     branches: ["main"]
 
-# Declare default permissions as read only.
-permissions: read-all
+# Declare no permissions as default.
+permissions: {}
 
 jobs:
   analysis:
