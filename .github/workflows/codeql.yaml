@@ -10,6 +10,8 @@ on:
   schedule:
     - cron: "34 0 * * 3"
 
+permissions:
+  contents: read
 jobs:
   trigger:
     uses: statnett/github-workflows/.github/workflows/codeql.yaml@main
