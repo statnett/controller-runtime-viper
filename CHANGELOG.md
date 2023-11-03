@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.8](https://github.com/statnett/controller-runtime-viper/compare/v0.3.7...v0.3.8) (2023-11-03)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/go-logr/zapr to v1.3.0 ([#252](https://github.com/statnett/controller-runtime-viper/issues/252)) ([adef06c](https://github.com/statnett/controller-runtime-viper/commit/adef06c12f46266d6661338d0c05f3b6a7967979))
+
 ## [0.3.7](https://github.com/statnett/controller-runtime-viper/compare/v0.3.6...v0.3.7) (2023-10-27)
 
 
