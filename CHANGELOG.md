@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.13](https://github.com/statnett/controller-runtime-viper/compare/v0.3.12...v0.3.13) (2023-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/go-logr/logr to v1.4.1 ([#273](https://github.com/statnett/controller-runtime-viper/issues/273)) ([f9cb001](https://github.com/statnett/controller-runtime-viper/commit/f9cb001adf1094a7ee1896fb9d42dd8af2bfcc97))
+
 ## [0.3.12](https://github.com/statnett/controller-runtime-viper/compare/v0.3.11...v0.3.12) (2023-12-21)
 
 
