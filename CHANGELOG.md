@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.17](https://github.com/statnett/controller-runtime-viper/compare/v0.3.16...v0.3.17) (2024-02-27)
+
+
+### Bug Fixes
+
+* **deps:** update module go.uber.org/zap to v1.27.0 ([#296](https://github.com/statnett/controller-runtime-viper/issues/296)) ([50fdcc5](https://github.com/statnett/controller-runtime-viper/commit/50fdcc574e657daaf934bf6c751f9a8d8e16c180))
+
 ## [0.3.16](https://github.com/statnett/controller-runtime-viper/compare/v0.3.15...v0.3.16) (2024-02-15)
 
 
