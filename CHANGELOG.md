@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.18](https://github.com/statnett/controller-runtime-viper/compare/v0.3.17...v0.3.18) (2024-03-20)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.16.0 ([#298](https://github.com/statnett/controller-runtime-viper/issues/298)) ([c741fd0](https://github.com/statnett/controller-runtime-viper/commit/c741fd0c95f3f5d465df29f077dd0305139455da))
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.17.0 ([#301](https://github.com/statnett/controller-runtime-viper/issues/301)) ([9231d88](https://github.com/statnett/controller-runtime-viper/commit/9231d8827192b8549c231607d9ddfdfde5579a6d))
+* **deps:** update module github.com/onsi/gomega to v1.32.0 ([#302](https://github.com/statnett/controller-runtime-viper/issues/302)) ([71a62d6](https://github.com/statnett/controller-runtime-viper/commit/71a62d63b39dad4da2b274e3d0b3886903c55f5d))
+
 ## [0.3.17](https://github.com/statnett/controller-runtime-viper/compare/v0.3.16...v0.3.17) (2024-02-27)
 
 
