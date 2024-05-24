@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.22](https://github.com/statnett/controller-runtime-viper/compare/v0.3.21...v0.3.22) (2024-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/go-logr/logr to v1.4.2 ([#337](https://github.com/statnett/controller-runtime-viper/issues/337)) ([684ac3f](https://github.com/statnett/controller-runtime-viper/commit/684ac3fd0f5765ec4e621408cd8bc8bddad3ca34))
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.18.0 ([#338](https://github.com/statnett/controller-runtime-viper/issues/338)) ([a6453b1](https://github.com/statnett/controller-runtime-viper/commit/a6453b18ddeb7b46bb9749d9d902afd290b39a8a))
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.19.0 ([#341](https://github.com/statnett/controller-runtime-viper/issues/341)) ([eed9fe2](https://github.com/statnett/controller-runtime-viper/commit/eed9fe201ba4fd4d5820bb5a304fbb9087a57030))
+* **deps:** update module sigs.k8s.io/controller-runtime to v0.18.3 ([#340](https://github.com/statnett/controller-runtime-viper/issues/340)) ([dabb2f0](https://github.com/statnett/controller-runtime-viper/commit/dabb2f017605ca2224f2aa83cea62d7f504a12f3))
+
 ## [0.3.21](https://github.com/statnett/controller-runtime-viper/compare/v0.3.20...v0.3.21) (2024-05-08)
 
 
