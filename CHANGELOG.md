@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.23](https://github.com/statnett/controller-runtime-viper/compare/v0.3.22...v0.3.23) (2024-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/viper to v1.19.0 ([#343](https://github.com/statnett/controller-runtime-viper/issues/343)) ([7399d20](https://github.com/statnett/controller-runtime-viper/commit/7399d201e4c364c3398ebf7dc46ca7aa0859c5fd))
+
 ## [0.3.22](https://github.com/statnett/controller-runtime-viper/compare/v0.3.21...v0.3.22) (2024-05-24)
 
 
