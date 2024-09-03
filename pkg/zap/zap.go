@@ -132,12 +132,13 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 		sVal := val.(string)
 		if sVal == "" {
 			var v zapcore.LevelEnabler
-			// return nil if logLevel is not set; controller-runtime sets the default value
+			// return nil if level is not set; controller-runtime sets the default value
 			return &v, nil
 		}
 
 		var logLevel zap.AtomicLevel
 		if err := logLevel.UnmarshalText([]byte(sVal)); err != nil {
+			// Level string not successfully parsed as a valid zap level string. Trying to parse int level.
 			iVal, err := strconv.Atoi(sVal)
 			if err != nil {
 				return nil, fmt.Errorf("invalid log logLevel \"%s\"", val)
