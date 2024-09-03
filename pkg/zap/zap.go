@@ -6,7 +6,6 @@ import (
 	"io"
 	"reflect"
 	"strconv"
-	"strings"
 
 	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
@@ -116,13 +115,6 @@ func newJSONEncoder(opts ...crzap.EncoderConfigOption) zapcore.Encoder {
 	return zapcore.NewJSONEncoder(encoderConfig)
 }
 
-var levelStrings = map[string]zapcore.Level{
-	"debug": zap.DebugLevel,
-	"info":  zap.InfoLevel,
-	"error": zap.ErrorLevel,
-	"panic": zap.PanicLevel,
-}
-
 func zapHook() mapstructure.DecodeHookFunc {
 	return mapstructure.ComposeDecodeHookFunc(
 		stringToLevelEnablerHookFunc(),
@@ -144,23 +136,23 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 			return &v, nil
 		}
 
-		// level supports setting of integer value > 0 in addition to `info`, `error` or `debug`
-		level, validLevel := levelStrings[strings.ToLower(sVal)]
-		if !validLevel {
-			logLevel, err := strconv.Atoi(sVal)
+		var logLevel zap.AtomicLevel
+		if err := logLevel.UnmarshalText([]byte(sVal)); err != nil {
+			// Level string not successfully parsed as a valid zap level string. Trying to parse int level.
+			iVal, err := strconv.Atoi(sVal)
 			if err != nil {
-				return nil, fmt.Errorf("invalid log level \"%s\"", val)
+				return nil, fmt.Errorf("invalid level value \"%s\"", val)
 			}
 
-			if logLevel > 0 {
-				intLevel := -1 * logLevel
-				return zap.NewAtomicLevelAt(zapcore.Level(int8(intLevel))), nil
-			} else {
-				return nil, fmt.Errorf("invalid log level \"%s\"", val)
+			if iVal < int(zap.DebugLevel) || iVal > int(zap.FatalLevel) {
+				return nil, fmt.Errorf("invalid level value \"%s\"", val)
 			}
+
+			// #nosec G115
+			logLevel = zap.NewAtomicLevelAt(zapcore.Level(int8(-iVal)))
 		}
 
-		return zap.NewAtomicLevelAt(level), nil
+		return logLevel, nil
 	}
 }
 
