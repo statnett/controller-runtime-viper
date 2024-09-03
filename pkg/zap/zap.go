@@ -141,11 +141,11 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 			// Level string not successfully parsed as a valid zap level string. Trying to parse int level.
 			iVal, err := strconv.Atoi(sVal)
 			if err != nil {
-				return nil, fmt.Errorf("invalid log logLevel \"%s\"", val)
+				return nil, fmt.Errorf("invalid level value \"%s\"", val)
 			}
 
 			if iVal < int(zap.DebugLevel) || iVal > int(zap.FatalLevel) {
-				return nil, fmt.Errorf("invalid log logLevel \"%s\"", val)
+				return nil, fmt.Errorf("invalid level value \"%s\"", val)
 			}
 
 			// #nosec G115
