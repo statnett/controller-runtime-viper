@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.29](https://github.com/statnett/controller-runtime-viper/compare/v0.3.28...v0.3.29) (2024-12-18)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/onsi/gomega to v1.36.1 ([#389](https://github.com/statnett/controller-runtime-viper/issues/389)) ([3074b89](https://github.com/statnett/controller-runtime-viper/commit/3074b895680f89105c04330ea7c08c3265eaf6f0))
+
 ## [0.3.28](https://github.com/statnett/controller-runtime-viper/compare/v0.3.27...v0.3.28) (2024-12-02)
 
 
