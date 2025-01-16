@@ -2,8 +2,6 @@ module github.com/statnett/controller-runtime-viper
 
 go 1.23.0
 
-toolchain go1.23.4
-
 require (
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/zapr v1.3.0
