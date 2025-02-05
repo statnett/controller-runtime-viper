@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.32](https://github.com/statnett/controller-runtime-viper/compare/v0.3.31...v0.3.32) (2025-02-05)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/pflag to v1.0.6 ([#404](https://github.com/statnett/controller-runtime-viper/issues/404)) ([0a26892](https://github.com/statnett/controller-runtime-viper/commit/0a268924a0acc6a42b07d4fb8e0a6cedbf750284))
+
 ## [0.3.31](https://github.com/statnett/controller-runtime-viper/compare/v0.3.30...v0.3.31) (2025-01-23)
 
 
