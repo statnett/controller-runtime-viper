@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.34](https://github.com/statnett/controller-runtime-viper/compare/v0.3.33...v0.3.34) (2025-02-20)
+
+
+### Bug Fixes
+
+* migrate away from archived mitchellh modules ([#417](https://github.com/statnett/controller-runtime-viper/issues/417)) ([ecd570b](https://github.com/statnett/controller-runtime-viper/commit/ecd570b9f9937108ae46cb2ad8a01849d23342ec))
+
 ## [0.3.33](https://github.com/statnett/controller-runtime-viper/compare/v0.3.32...v0.3.33) (2025-02-14)
 
 
