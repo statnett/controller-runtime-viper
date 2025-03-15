@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.35](https://github.com/statnett/controller-runtime-viper/compare/v0.3.34...v0.3.35) (2025-03-15)
+
+
+### Bug Fixes
+
+* **deps:** bump golang.org/x/net to mend GHSA-qxp5-gwg8-xv66 ([#427](https://github.com/statnett/controller-runtime-viper/issues/427)) ([ffa9106](https://github.com/statnett/controller-runtime-viper/commit/ffa9106ea3f10e16986ec73a6e6fc2c60c2845bf))
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.23.0 ([#420](https://github.com/statnett/controller-runtime-viper/issues/420)) ([10634f2](https://github.com/statnett/controller-runtime-viper/commit/10634f2283f54ce9052689400a014de1c98645e3))
+* **deps:** update module github.com/spf13/viper to v1.20.0 ([#426](https://github.com/statnett/controller-runtime-viper/issues/426)) ([f8404d0](https://github.com/statnett/controller-runtime-viper/commit/f8404d058fa6b4820472fcacee1f547e0d5e195c))
+* **deps:** update module sigs.k8s.io/controller-runtime to v0.20.3 ([#422](https://github.com/statnett/controller-runtime-viper/issues/422)) ([51f04e2](https://github.com/statnett/controller-runtime-viper/commit/51f04e2b3a42a2da7aeab2217957f4129ea6a443))
+
 ## [0.3.34](https://github.com/statnett/controller-runtime-viper/compare/v0.3.33...v0.3.34) (2025-02-20)
 
 
