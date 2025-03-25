@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"flag"
-	"os"
 	"reflect"
 	"strings"
 	"testing"
@@ -51,8 +50,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 	Context("with  zap-log-level options provided", func() {
 		It("Should output logs for info and debug zap-log-level.", Label("loglevel"), func() {
-			os.Setenv("ZAP_LOG_LEVEL", "debug")
-			defer os.Unsetenv("ZAP_LOG_LEVEL")
+			GinkgoT().Setenv("ZAP_LOG_LEVEL", "debug")
 
 			logOut := new(bytes.Buffer)
 
@@ -68,8 +66,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should output only error logs, otherwise empty logs", Label("loglevel"), func() {
-			os.Setenv("ZAP_LOG_LEVEL", "error")
-			defer os.Unsetenv("ZAP_LOG_LEVEL")
+			GinkgoT().Setenv("ZAP_LOG_LEVEL", "error")
 
 			logOut := new(bytes.Buffer)
 
@@ -86,10 +83,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 	Context("with  zap-log-level  with increased verbosity.", func() {
 		It("Should output debug and info log, with default production mode.", Label("loglevel"), func() {
-			os.Setenv("ZAP_LOG_LEVEL", "1")
-			os.Setenv("ZAP_DEVEL", "false")
-			defer os.Unsetenv("ZAP_LOG_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_LOG_LEVEL", "1")
+			GinkgoT().Setenv("ZAP_DEVEL", "false")
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -103,10 +98,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should output info and debug logs, with development mode.", func() {
-			os.Setenv("ZAP_LOG_LEVEL", "1")
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_LOG_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_LOG_LEVEL", "1")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -120,10 +113,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should output info, and debug logs with increased verbosity, and with development mode set to true.", Label("level3"), func() {
-			os.Setenv("ZAP_LOG_LEVEL", "3")
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_LOG_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_LOG_LEVEL", "3")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -144,8 +135,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 	Context("with zap-time-encoding flag provided", Label("timeencoder"), func() {
 
 		It("Should set time encoder in options", func() {
-			os.Setenv("ZAP_TIME_ENCODING", "rfc3339")
-			defer os.Unsetenv("ZAP_TIME_ENCODING")
+			GinkgoT().Setenv("ZAP_TIME_ENCODING", "rfc3339")
 
 			opt := crzap.Options{}
 			UseFlagOptions(&opts)(&opt)
@@ -157,8 +147,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should default to 'iso8061' time encoding", func() {
-			os.Setenv("ZAP_TIME_ENCODING", "")
-			defer os.Unsetenv("ZAP_TIME_ENCODING")
+			GinkgoT().Setenv("ZAP_TIME_ENCODING", "")
 
 			opt := crzap.Options{}
 			UseFlagOptions(&opts)(&opt)
@@ -170,8 +159,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should return epochTimeEncoder for unknown time-encoding", func() {
-			os.Setenv("ZAP_TIME_ENCODING", "unknown")
-			defer os.Unsetenv("ZAP_TIME_ENCODING")
+			GinkgoT().Setenv("ZAP_TIME_ENCODING", "unknown")
 
 			opt := crzap.Options{}
 			UseFlagOptions(&opts)(&opt)
@@ -185,8 +173,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should propagate time encoder to logger", func() {
 			// zaps ISO8601TimeEncoder uses 2006-01-02T15:04:05.000Z0700 as pattern for iso8601 encoding
 			iso8601Pattern := `^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}([-+][0-9]{4}|Z)`
-			os.Setenv("ZAP_TIME_ENCODING", "iso8601")
-			defer os.Unsetenv("ZAP_TIME_ENCODING")
+			GinkgoT().Setenv("ZAP_TIME_ENCODING", "iso8601")
 
 			logOut := new(bytes.Buffer)
 
@@ -205,8 +192,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 	Context("with zap-encoding flag provided", Label("encoder"), func() {
 
 		It("Should default to console encoder when not set (in development mode)", func() {
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 
 			logOut := new(bytes.Buffer)
 
@@ -219,8 +205,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should set json encoder in options", func() {
-			os.Setenv("ZAP_ENCODER", "json")
-			defer os.Unsetenv("ZAP_ENCODER")
+			GinkgoT().Setenv("ZAP_ENCODER", "json")
 
 			logOut := new(bytes.Buffer)
 
@@ -244,8 +229,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("should PANIC when invalid encoder is supplied", func() {
-			os.Setenv("ZAP_ENCODER", "invalid")
-			defer os.Unsetenv("ZAP_ENCODER")
+			GinkgoT().Setenv("ZAP_ENCODER", "invalid")
 
 			panicFunc := func() {
 				UseFlagOptions(&opts)
@@ -255,8 +239,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should propagate console encoder to logger", func() {
-			os.Setenv("ZAP_ENCODER", "console")
-			defer os.Unsetenv("ZAP_ENCODER")
+			GinkgoT().Setenv("ZAP_ENCODER", "console")
 
 			logOut := new(bytes.Buffer)
 
@@ -269,10 +252,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should propagate json encoder to logger", func() {
-			os.Setenv("ZAP_ENCODER", "json")
-			os.Setenv("ZAP_TIME_ENCODING", "iso8601")
-			defer os.Unsetenv("ZAP_ENCODER")
-			defer os.Unsetenv("ZAP_TIME_ENCODING")
+			GinkgoT().Setenv("ZAP_ENCODER", "json")
+			GinkgoT().Setenv("ZAP_TIME_ENCODING", "iso8601")
 
 			logOut := new(bytes.Buffer)
 
@@ -289,10 +270,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 	Context("with  zap-stacktrace-level options provided", func() {
 
 		It("Should output stacktrace at info level, with development mode set to true.", func() {
-			os.Setenv("ZAP_STACKTRACE_LEVEL", "info")
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_STACKTRACE_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_STACKTRACE_LEVEL", "info")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 			out := crzap.Options{}
 			UseFlagOptions(&opts)(&out)
 
@@ -300,10 +279,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should output stacktrace at error level, with development mode set to true.", func() {
-			os.Setenv("ZAP_STACKTRACE_LEVEL", "error")
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_STACKTRACE_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_STACKTRACE_LEVEL", "error")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 			out := crzap.Options{}
 			UseFlagOptions(&opts)(&out)
 
@@ -311,10 +288,8 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should output stacktrace at panic level, with development mode set to true.", func() {
-			os.Setenv("ZAP_STACKTRACE_LEVEL", "panic")
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_STACKTRACE_LEVEL")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_STACKTRACE_LEVEL", "panic")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 
 			out := crzap.Options{}
 			UseFlagOptions(&opts)(&out)
@@ -329,8 +304,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 	Context("with only -zap-devel flag provided", func() {
 
 		It("Should set dev=true.", Label("onlydev"), func() {
-			os.Setenv("ZAP_DEVEL", "true")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_DEVEL", "true")
 
 			out := crzap.Options{}
 
@@ -345,8 +319,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		})
 
 		It("Should set dev=false", func() {
-			os.Setenv("ZAP_DEVEL", "false")
-			defer os.Unsetenv("ZAP_DEVEL")
+			GinkgoT().Setenv("ZAP_DEVEL", "false")
 
 			out := crzap.Options{}
 
