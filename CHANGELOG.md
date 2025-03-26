@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.37](https://github.com/statnett/controller-runtime-viper/compare/v0.3.36...v0.3.37) (2025-03-26)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/viper to v1.20.1 ([#441](https://github.com/statnett/controller-runtime-viper/issues/441)) ([12aa3bb](https://github.com/statnett/controller-runtime-viper/commit/12aa3bb2199517c8952fb81874816400338d5dd3))
+
 ## [0.3.36](https://github.com/statnett/controller-runtime-viper/compare/v0.3.35...v0.3.36) (2025-03-25)
 
 
