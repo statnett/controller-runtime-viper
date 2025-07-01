@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.41](https://github.com/statnett/controller-runtime-viper/compare/v0.3.40...v0.3.41) (2025-06-30)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/go-viper/mapstructure/v2 to v2.3.0 ([#463](https://github.com/statnett/controller-runtime-viper/issues/463)) ([9322b70](https://github.com/statnett/controller-runtime-viper/commit/9322b70a2e74d28f3a8b4a5aa34a30c7a36cb465))
+
 ## [0.3.40](https://github.com/statnett/controller-runtime-viper/compare/v0.3.39...v0.3.40) (2025-05-28)
 
 
