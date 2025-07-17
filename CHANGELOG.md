@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.42](https://github.com/statnett/controller-runtime-viper/compare/v0.3.41...v0.3.42) (2025-07-17)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/go-viper/mapstructure/v2 to v2.4.0 ([#468](https://github.com/statnett/controller-runtime-viper/issues/468)) ([beb1510](https://github.com/statnett/controller-runtime-viper/commit/beb1510be22c5d6f3eac66229dea4a86d72324d2))
+* **deps:** Update module github.com/spf13/pflag to v1.0.7 ([#470](https://github.com/statnett/controller-runtime-viper/issues/470)) ([75cc93a](https://github.com/statnett/controller-runtime-viper/commit/75cc93a4b210797b642b54c12c561019fb0d43c6))
+
 ## [0.3.41](https://github.com/statnett/controller-runtime-viper/compare/v0.3.40...v0.3.41) (2025-06-30)
 
 
