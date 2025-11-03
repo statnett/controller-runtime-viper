@@ -87,8 +87,8 @@ func New(opts ...crzap.Opts) logr.Logger {
 }
 
 var (
-	levelEnablerType   = reflect.TypeOf((*zapcore.LevelEnabler)(nil)).Elem()
-	newEncoderFuncType = reflect.TypeOf((*crzap.NewEncoderFunc)(nil)).Elem()
+	levelEnablerType   = reflect.TypeFor[zapcore.LevelEnabler]()
+	newEncoderFuncType = reflect.TypeFor[crzap.NewEncoderFunc]()
 )
 
 /*
@@ -124,7 +124,7 @@ func zapHook() mapstructure.DecodeHookFunc {
 }
 
 func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
-	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
+	return func(in reflect.Type, out reflect.Type, val any) (any, error) {
 		if in.Kind() != reflect.String || out != levelEnablerType {
 			return val, nil
 		}
@@ -157,7 +157,7 @@ func stringToLevelEnablerHookFunc() mapstructure.DecodeHookFuncType {
 }
 
 func stringToNewEncoderFuncHookFunc() mapstructure.DecodeHookFuncType {
-	return func(in reflect.Type, out reflect.Type, val interface{}) (interface{}, error) {
+	return func(in reflect.Type, out reflect.Type, val any) (any, error) {
 		if in.Kind() != reflect.String || out != newEncoderFuncType {
 			return val, nil
 		}

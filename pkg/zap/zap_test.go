@@ -182,7 +182,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			outRaw := logOut.Bytes()
 
-			res := map[string]interface{}{}
+			res := map[string]any{}
 			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
 			Expect(res["ts"]).Should(MatchRegexp(iso8601Pattern))
 		})
