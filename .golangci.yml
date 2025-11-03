@@ -8,10 +8,11 @@ linters:
     - gocritic
     - godot
     - gosec
+    - modernize
     - predeclared
     - unparam
     - whitespace
-    - wsl
+    - wsl_v5
   settings:
     gocritic:
       enabled-checks:
