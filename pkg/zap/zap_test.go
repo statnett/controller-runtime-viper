@@ -62,7 +62,6 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			Expect(string(outRaw)).Should(ContainSubstring(logInfoLevel0))
 			Expect(string(outRaw)).Should(ContainSubstring(logDebugLevel1))
-
 		})
 
 		It("Should output only error logs, otherwise empty logs", Label("loglevel"), func() {
@@ -78,13 +77,13 @@ var _ = Describe("Zap log level flag options setup", func() {
 
 			Expect(outRaw).To(BeEmpty())
 		})
-
 	})
 
 	Context("with  zap-log-level  with increased verbosity.", func() {
 		It("Should output debug and info log, with default production mode.", Label("loglevel"), func() {
 			GinkgoT().Setenv("ZAP_LOG_LEVEL", "1")
 			GinkgoT().Setenv("ZAP_DEVEL", "false")
+
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -100,6 +99,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should output info and debug logs, with development mode.", func() {
 			GinkgoT().Setenv("ZAP_LOG_LEVEL", "1")
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
+
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -115,6 +115,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should output info, and debug logs with increased verbosity, and with development mode set to true.", Label("level3"), func() {
 			GinkgoT().Setenv("ZAP_LOG_LEVEL", "3")
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
+
 			logOut := new(bytes.Buffer)
 
 			logger := New(UseFlagOptions(&opts), crzap.WriteTo(logOut))
@@ -133,7 +134,6 @@ var _ = Describe("Zap log level flag options setup", func() {
 	})
 
 	Context("with zap-time-encoding flag provided", Label("timeencoder"), func() {
-
 		It("Should set time encoder in options", func() {
 			GinkgoT().Setenv("ZAP_TIME_ENCODING", "rfc3339")
 
@@ -173,6 +173,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should propagate time encoder to logger", func() {
 			// zaps ISO8601TimeEncoder uses 2006-01-02T15:04:05.000Z0700 as pattern for iso8601 encoding
 			iso8601Pattern := `^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}([-+][0-9]{4}|Z)`
+
 			GinkgoT().Setenv("ZAP_TIME_ENCODING", "iso8601")
 
 			logOut := new(bytes.Buffer)
@@ -186,11 +187,9 @@ var _ = Describe("Zap log level flag options setup", func() {
 			Expect(json.Unmarshal(outRaw, &res)).To(Succeed())
 			Expect(res["ts"]).Should(MatchRegexp(iso8601Pattern))
 		})
-
 	})
 
 	Context("with zap-encoding flag provided", Label("encoder"), func() {
-
 		It("Should default to console encoder when not set (in development mode)", func() {
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
 
@@ -264,14 +263,13 @@ var _ = Describe("Zap log level flag options setup", func() {
 			expectedPattern := `{\"level\":\"info\",\"ts\":\".+\",\"msg\":\"This is a test message\"}\n`
 			Expect(outRaw).Should(MatchRegexp(expectedPattern))
 		})
-
 	})
 
 	Context("with  zap-stacktrace-level options provided", func() {
-
 		It("Should output stacktrace at info level, with development mode set to true.", func() {
 			GinkgoT().Setenv("ZAP_STACKTRACE_LEVEL", "info")
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
+
 			out := crzap.Options{}
 			UseFlagOptions(&opts)(&out)
 
@@ -281,6 +279,7 @@ var _ = Describe("Zap log level flag options setup", func() {
 		It("Should output stacktrace at error level, with development mode set to true.", func() {
 			GinkgoT().Setenv("ZAP_STACKTRACE_LEVEL", "error")
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
+
 			out := crzap.Options{}
 			UseFlagOptions(&opts)(&out)
 
@@ -298,11 +297,9 @@ var _ = Describe("Zap log level flag options setup", func() {
 			Expect(out.StacktraceLevel.Enabled(zapcore.ErrorLevel)).To(BeFalse())
 			Expect(out.StacktraceLevel.Enabled(zapcore.InfoLevel)).To(BeFalse())
 		})
-
 	})
 
 	Context("with only -zap-devel flag provided", func() {
-
 		It("Should set dev=true.", Label("onlydev"), func() {
 			GinkgoT().Setenv("ZAP_DEVEL", "true")
 
@@ -315,7 +312,6 @@ var _ = Describe("Zap log level flag options setup", func() {
 			Expect(out.Level).To(BeNil())
 			Expect(out.StacktraceLevel).To(BeNil())
 			Expect(out.EncoderConfigOptions).To(BeNil())
-
 		})
 
 		It("Should set dev=false", func() {
@@ -330,9 +326,6 @@ var _ = Describe("Zap log level flag options setup", func() {
 			Expect(out.Level).To(BeNil())
 			Expect(out.StacktraceLevel).To(BeNil())
 			Expect(out.EncoderConfigOptions).To(BeNil())
-
 		})
-
 	})
-
 })
