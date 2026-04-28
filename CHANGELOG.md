@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.54](https://github.com/statnett/controller-runtime-viper/compare/v0.3.53...v0.3.54) (2026-04-28)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/onsi/ginkgo/v2 to v2.28.2 ([#553](https://github.com/statnett/controller-runtime-viper/issues/553)) ([be2792b](https://github.com/statnett/controller-runtime-viper/commit/be2792bdc7d1a8378d28b3f34e8f6076cd6a47ae))
+* **deps:** Update module go.uber.org/zap to v1.28.0 ([#554](https://github.com/statnett/controller-runtime-viper/issues/554)) ([bfc314a](https://github.com/statnett/controller-runtime-viper/commit/bfc314a7a1f07a653ffb239123bf4e109ee49218))
+
 ## [0.3.53](https://github.com/statnett/controller-runtime-viper/compare/v0.3.52...v0.3.53) (2026-03-09)
 
 
