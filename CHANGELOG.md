@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.56](https://github.com/statnett/controller-runtime-viper/compare/v0.3.55...v0.3.56) (2026-05-12)
+
+
+### Bug Fixes
+
+* **deps:** Update module sigs.k8s.io/controller-runtime to v0.24.1 ([#564](https://github.com/statnett/controller-runtime-viper/issues/564)) ([a653aba](https://github.com/statnett/controller-runtime-viper/commit/a653abaeea667b769faf6ab72da2da7a1a2dc414))
+
 ## [0.3.55](https://github.com/statnett/controller-runtime-viper/compare/v0.3.54...v0.3.55) (2026-04-30)
 
 
