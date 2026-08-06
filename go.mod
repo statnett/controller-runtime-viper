@@ -3,7 +3,7 @@ module github.com/statnett/controller-runtime-viper
 go 1.26.0
 
 require (
-	github.com/go-logr/logr v1.4.3
+	github.com/go-logr/logr v1.4.4
 	github.com/go-logr/zapr v1.3.0
 	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/onsi/ginkgo/v2 v2.32.0
