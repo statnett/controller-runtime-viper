@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.61](https://github.com/statnett/controller-runtime-viper/compare/v0.3.60...v0.3.61) (2026-09-14)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/onsi/ginkgo/v2 to v2.32.2 ([#600](https://github.com/statnett/controller-runtime-viper/issues/600)) ([8e5387b](https://github.com/statnett/controller-runtime-viper/commit/8e5387b00218da0cfe32813f6edbf66f56c2425f))
+* **deps:** Update module sigs.k8s.io/controller-runtime to v0.25.1 ([#602](https://github.com/statnett/controller-runtime-viper/issues/602)) ([0637224](https://github.com/statnett/controller-runtime-viper/commit/0637224b50fb85221f0dfea5b78708a4809a290b))
+
 ## [0.3.60](https://github.com/statnett/controller-runtime-viper/compare/v0.3.59...v0.3.60) (2026-09-04)
 
 
