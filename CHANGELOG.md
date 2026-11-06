@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.65](https://github.com/statnett/controller-runtime-viper/compare/v0.3.64...v0.3.65) (2026-11-06)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/onsi/ginkgo/v2 to v2.34.0 ([#615](https://github.com/statnett/controller-runtime-viper/issues/615)) ([4cecc01](https://github.com/statnett/controller-runtime-viper/commit/4cecc01783a98846f5f6c62307c9ca5ac164c1fc))
+* **deps:** Update module github.com/spf13/pflag to v1.1.0 ([#618](https://github.com/statnett/controller-runtime-viper/issues/618)) ([9aea1f2](https://github.com/statnett/controller-runtime-viper/commit/9aea1f215cbe2c0773241e0aac08ce55aa9854b1))
+
 ## [0.3.64](https://github.com/statnett/controller-runtime-viper/compare/v0.3.63...v0.3.64) (2026-10-17)
 
 
